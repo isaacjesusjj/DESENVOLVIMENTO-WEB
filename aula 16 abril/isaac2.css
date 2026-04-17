@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #2b4ec4;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(252, 184, 164);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    color: rgb(94, 180, 230);
+}
+
+/* Container flexbox */
+.container {
+    display:flex;
+    flex-wrap:wrap-reverse;
+    justify-content:space-around;
+    gap: 50px;
+}
+
+/* Cards padrão */
+.card {
+    width: 180px;
+    height: 250px;
+    background-color: rgb(73, 177, 209);
+    border-radius: 10px;
+    box-shadow: 0 5px 8px rgba(175, 50, 50, 0.1);
+    
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+    justify-content: space-around;
+    
+    padding: 10px;
+    text-align: center;
+}
+
+/* Imagens */
+.card img {
+    width: 150px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Card especial */
+.destaque {
+    background-color: #142247;
+    font-weight: bold;
+    color: white;
+}
+
+h2 {
+    color: white;
+    font-style: italic;
+}
