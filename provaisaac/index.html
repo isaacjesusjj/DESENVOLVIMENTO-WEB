@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alter Ego Web</title>
+
+  <style>
+    /* sc_isaac_body: estilo geral da página */
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      background-color: #e7e7e7;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* sc_isaac_modo_heroi: muda o visual quando está no modo herói */
+    body.sc_isaac_modo_heroi {
+      background-color: #202820;
+      color: white;
+    }
+
+    /* sc_isaac_container: área principal */
+    .sc_isaac_container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      border: 2px solid #d0d0d0;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    body.sc_isaac_modo_heroi .sc_isaac_container {
+      background-color: #2d332d;
+      border-color: #6f7b6f;
+    }
+
+    /* sc_isaac_cabecalho: parte de cima com título e subtítulo */
+    .sc_isaac_cabecalho {
+      background-color: #c0392b;
+      color: white;
+      padding: 18px;
+      border-radius: 12px;
+      text-align: left;
+      margin-bottom: 25px;
+    }
+
+    body.sc_isaac_modo_heroi .sc_isaac_cabecalho {
+      background-color: #344634;
+    }
+
+    /* sc_isaac_titulo: título principal */
+    .sc_isaac_titulo {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 38px;
+      margin: 0 0 8px 0;
+      letter-spacing: 1px;
+    }
+
+    /* sc_isaac_subtitulo: texto abaixo do título */
+    .sc_isaac_subtitulo {
+      font-size: 15px;
+      margin: 0;
+    }
+
+    /* sc_isaac_foto: área toda da imagem */
+    .sc_isaac_foto {
+      width: 180px;
+      height: 180px;
+      border-radius: 15px;
+      background-color: #d9d9d9;
+      border: 4px solid #c0392b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+      overflow: hidden;
+      float: left;
+      margin: 0 25px 20px 0;
+    }
+
+    body.sc_isaac_modo_heroi .sc_isaac_foto {
+      border-color: #7cff7c;
+      background-color: #1d241d;
+    }
+
+    /* sc_isaac_foto img: imagem preenchendo o espaço */
+    .sc_isaac_foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* sc_isaac_cards: organização dos cardes */
+    .sc_isaac_cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    /* sc_isaac_card: cada caixinha de informação */
+    .sc_isaac_card {
+      background-color: #f7f7f7;
+      color: #222;
+      padding: 14px;
+      border-left: 6px solid #c0392b;
+      border-radius: 8px;
+      min-height: 75px;
+    }
+
+    body.sc_isaac_modo_heroi .sc_isaac_card {
+      background-color: #384238;
+      color: white;
+      border-left-color: #7cff7c;
+    }
+
+    /* sc_isaac_card_titulo: título pequeno de cada card */
+    .sc_isaac_card_titulo {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0 0 8px 0;
+      color: #c0392b;
+      text-transform: uppercase;
+    }
+
+    body.sc_isaac_modo_heroi .sc_isaac_card_titulo {
+      color: #7cff7c;
+    }
+
+    .sc_isaac_card p:last-child {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    /* sc_isaac_descricao: card maior da descrição */
+    .sc_isaac_descricao {
+      grid-column: 1 / 3;
+      background-color: #eeeeee;
+      line-height: 1.5;
+      clear: both;
+    }
+
+    body.sc_isaac_modo_heroi .sc_isaac_descricao {
+      background-color: #303a30;
+    }
+
+    /* sc_isaac_area_botao: área do botão */
+    .sc_isaac_area_botao {
+      text-align: right;
+      margin-top: 25px;
+      clear: both;
+    }
+
+    /* sc_isaac_btn_transformar: botão de transformação */
+    #sc_isaac_btn_transformar {
+      background-color: #c0392b;
+      color: white;
+      border: 2px solid #922b21;
+      padding: 12px 28px;
+      font-size: 17px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    /* sc_isaac_btn_transformar_hover: efeito ao passar o mouse */
+    #sc_isaac_btn_transformar:hover {
+      background-color: #922b21;
+    }
+
+    body.sc_isaac_modo_heroi #sc_isaac_btn_transformar {
+      background-color: #405940;
+      border-color: #7cff7c;
+    }
+
+    body.sc_isaac_modo_heroi #sc_isaac_btn_transformar:hover {
+      background-color: #2b3b2b;
+    }
+
+    /* sc_isaac_media_tablet: ajustes para telas médias */
+    @media (max-width: 900px) {
+      .sc_isaac_container {
+        width: 88%;
+      }
+
+      .sc_isaac_foto {
+        width: 160px;
+        height: 160px;
+      }
+
+      .sc_isaac_cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .sc_isaac_descricao {
+        grid-column: 1 / 3;
+      }
+    }
+
+    /* sc_isaac_media_celular: ajustes para celular */
+    @media (max-width: 600px) {
+      .sc_isaac_container {
+        width: auto;
+        margin: 15px;
+        padding: 18px;
+      }
+
+      .sc_isaac_cabecalho {
+        text-align: center;
+      }
+
+      .sc_isaac_titulo {
+        font-size: 30px;
+      }
+
+      .sc_isaac_foto {
+        float: none;
+        margin: 0 auto 20px auto;
+        width: 150px;
+        height: 150px;
+      }
+
+      .sc_isaac_cards {
+        grid-template-columns: 1fr;
+      }
+
+      .sc_isaac_descricao {
+        grid-column: 1;
+      }
+
+      .sc_isaac_area_botao {
+        text-align: center;
+      }
+
+      #sc_isaac_btn_transformar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="sc_isaac_container">
+    <header class="sc_isaac_cabecalho">
+      <h1 class="sc_isaac_titulo" id="sc_isaac_titulo">Identidade Civil</h1>
+      <p class="sc_isaac_subtitulo" id="sc_isaac_subtitulo">Essas são minhas informações normais.</p>
+    </header>
+
+    <div class="sc_isaac_foto" id="sc_isaac_foto">
+      <img id="sc_isaac_imagem" src="eu.jpg" alt="Foto de Isaac">
+    </div>
+
+    <section class="sc_isaac_cards">
+      <div class="sc_isaac_card">
+        <p class="sc_isaac_card_titulo">Nome</p>
+        <p id="sc_isaac_nome">Isaac de Jesus Lima</p>
+      </div>
+
+      <div class="sc_isaac_card">
+        <p class="sc_isaac_card_titulo">Idade</p>
+        <p id="sc_isaac_idade">19 anos</p>
+      </div>
+
+      <div class="sc_isaac_card">
+        <p class="sc_isaac_card_titulo" id="sc_isaac_titulo_hobby">Time do coração</p>
+        <p id="sc_isaac_hobby">Corinthians</p>
+      </div>
+
+      <div class="sc_isaac_card">
+        <p class="sc_isaac_card_titulo" id="sc_isaac_titulo_comida">Comida favorita</p>
+        <p id="sc_isaac_comida">Pizza</p>
+      </div>
+
+      <div class="sc_isaac_card">
+        <p class="sc_isaac_card_titulo" id="sc_isaac_titulo_extra1">Cidade</p>
+        <p id="sc_isaac_extra1">São Paulo</p>
+      </div>
+
+      <div class="sc_isaac_card">
+        <p class="sc_isaac_card_titulo" id="sc_isaac_titulo_extra2">Signo</p>
+        <p id="sc_isaac_extra2">Escorpião</p>
+      </div>
+
+      <div class="sc_isaac_card sc_isaac_descricao">
+        <p class="sc_isaac_card_titulo" id="sc_isaac_titulo_descricao">Sobre mim</p>
+        <p id="sc_isaac_descricao_texto">
+          Meu nome é Isaac, sou estudante de Análise e Desenvolvimento de Sistemas e trabalho como analista de e-commerce no Mercado Livre, com foco em anúncios de peças automotivas. Tenho interesse em tecnologia, inteligência artificial e desenvolvimento de soluções digitais que facilitem a vida das pessoas.
+
+          Gosto de aprender na prática, principalmente programação e automação, buscando sempre evoluir tanto profissionalmente quanto pessoalmente. Também tenho interesse em criação de conteúdo com IA, marketing digital e inovação. Sou uma pessoa dedicada, curiosa e que gosta de enfrentar desafios para crescer e conquistar novos objetivos.
+        </p>
+      </div>
+    </section>
+
+    <div class="sc_isaac_area_botao">
+      <button id="sc_isaac_btn_transformar">Transformar!</button>
+    </div>
+  </main>
+
+  <script>
+    // sc_isaac_eh_heroi: guarda se a página está mostrando o herói ou a pessoa normal
+    let sc_isaac_eh_heroi = false;
+
+    // sc_isaac_trocar_texto: recebe os dados e troca os textos que aparecem na tela
+    function sc_isaac_trocar_texto(dados) {
+      document.getElementById("sc_isaac_titulo").textContent = dados.titulo;
+      document.getElementById("sc_isaac_subtitulo").textContent = dados.subtitulo;
+
+      const imagem = document.getElementById("sc_isaac_imagem");
+      imagem.src = dados.fotoSrc;
+      imagem.alt = dados.fotoAlt;
+
+      document.getElementById("sc_isaac_nome").textContent = dados.nome;
+      document.getElementById("sc_isaac_idade").textContent = dados.idade;
+      document.getElementById("sc_isaac_titulo_hobby").textContent = dados.tituloHobby;
+      document.getElementById("sc_isaac_hobby").textContent = dados.hobby;
+      document.getElementById("sc_isaac_titulo_comida").textContent = dados.tituloComida;
+      document.getElementById("sc_isaac_comida").textContent = dados.comida;
+      document.getElementById("sc_isaac_titulo_extra1").textContent = dados.tituloExtra1;
+      document.getElementById("sc_isaac_extra1").textContent = dados.extra1;
+      document.getElementById("sc_isaac_titulo_extra2").textContent = dados.tituloExtra2;
+      document.getElementById("sc_isaac_extra2").textContent = dados.extra2;
+      document.getElementById("sc_isaac_titulo_descricao").textContent = dados.tituloDescricao;
+      document.getElementById("sc_isaac_descricao_texto").textContent = dados.descricao;
+      document.getElementById("sc_isaac_btn_transformar").textContent = dados.botao;
+    }
+
+    // sc_isaac_transformar: função chamada pelo botão para alternar entre civil e herói
+    function sc_isaac_transformar() {
+      const dadosCivil = {
+        titulo: "Identidade Civil",
+        subtitulo: "Essas são minhas informações normais.",
+        fotoSrc: "eu.jpg",
+        fotoAlt: "Foto de Isaac",
+        nome: "Isaac de Jesus Lima",
+        idade: "19 anos",
+        tituloHobby: "Time do coração",
+        hobby: "Corinthians",
+        tituloComida: "Comida favorita",
+        comida: "Pizza",
+        tituloExtra1: "Cidade",
+        extra1: "São Paulo",
+        tituloExtra2: "Signo",
+        extra2: "Escorpião",
+        tituloDescricao: "Sobre mim",
+        descricao: "Meu nome é Isaac, sou estudante de Análise e Desenvolvimento de Sistemas e trabalho como analista de e-commerce no Mercado Livre, com foco em anúncios de peças automotivas. Tenho interesse em tecnologia, inteligência artificial e desenvolvimento de soluções digitais que facilitem a vida das pessoas. Gosto de aprender na prática, principalmente programação e automação, buscando sempre evoluir tanto profissionalmente quanto pessoalmente. Também tenho interesse em criação de conteúdo com IA, marketing digital e inovação. Sou uma pessoa dedicada, curiosa e que gosta de enfrentar desafios para crescer e conquistar novos objetivos.",
+        botao: "Transformar!"
+      };
+
+      const dadosHeroi = {
+        titulo: "Doctor Doom",
+        subtitulo: "Agora apareceu o soberano da Latvéria!",
+        fotoSrc: "doctor-doom.jpg",
+        fotoAlt: "Imagem do Doctor Doom",
+        nome: "Victor Von Doom",
+        idade: "Idade desconhecida",
+        tituloHobby: "Reino",
+        hobby: "Latvéria",
+        tituloComida: "Comida do vilão",
+        comida: "Banquete real",
+        tituloExtra1: "Poder",
+        extra1: "Magia e tecnologia",
+        tituloExtra2: "Equipamento",
+        extra2: "Armadura metálica",
+        tituloDescricao: "Sobre o Doctor Doom",
+        descricao: "Doctor Doom, também conhecido como Victor Von Doom, é o soberano da Latvéria e um dos personagens mais inteligentes e poderosos da Marvel. Ele une ciência avançada, tecnologia e magia para enfrentar seus inimigos. Com sua armadura metálica, sua mente brilhante e sua grande ambição, Doom acredita que pode governar melhor do que qualquer outra pessoa. Seu maior rival é Reed Richards, do Quarteto Fantástico.",
+        botao: "Voltar"
+      };
+
+      sc_isaac_eh_heroi = !sc_isaac_eh_heroi;
+
+      if (sc_isaac_eh_heroi) {
+        document.body.classList.add("sc_isaac_modo_heroi");
+        sc_isaac_trocar_texto(dadosHeroi);
+      } else {
+        document.body.classList.remove("sc_isaac_modo_heroi");
+        sc_isaac_trocar_texto(dadosCivil);
+      }
+    }
+
+    // sc_isaac_evento_botao: liga o clique do botão com a função de transformar
+    document.getElementById("sc_isaac_btn_transformar").addEventListener("click", sc_isaac_transformar);
+  </script>
+</body>
+</html>
